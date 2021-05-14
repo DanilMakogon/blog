@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 /**
@@ -37,6 +38,32 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%users}}';
     }
 
+    public function attributeLabels()
+    {
+
+        return [
+            'id' => 'ID',
+            'username' => 'Имя пользователя',
+            'password_hash' => 'Хеш-пароля',
+            'password_reset_token' => 'Токен сброса пароля',
+            'email' => 'Почта',
+            'auth_key' => 'Ключ аутентификации',
+            'status' => 'Статус',
+            'role' => 'Роль',
+            'created_at' => 'Время создания',
+            'updated_at' => 'Время обновления'
+        ];
+    }
+
+    public function rules()
+    {
+        return [
+            [['email', 'password_hash', 'body'], 'required'],
+
+            ['email', 'email'],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -46,7 +73,6 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
         ];
     }
-
 
     /**
      * @inheritdoc
@@ -113,8 +139,11 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function isAdmin()
     {
-        if($this->getRole() == User::ROLE_ADMIN) return true;
-        else return false;
+        if ($this->getRole() == User::ROLE_ADMIN) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

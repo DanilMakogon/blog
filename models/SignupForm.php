@@ -17,16 +17,31 @@ class SignupForm extends \yii\base\Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            ['username', 'required', 'message' => 'Введите имя пользователя'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Такое логин уже занят.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'string', 'min' => 2, 'max' => 255, 'tooShort' => 'Короткое имя'],
             ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
+            ['email', 'required', 'message' => 'Введите почту'],
+            ['email', 'email', 'message' => 'Неверное значение почты'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Такая почта уже занята.'],
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'required', 'message' => 'Введите пароль'],
+            ['password', 'string', 'min' => 6, 'tooShort' => 'Пароль должен содержать не менее 6-ти символов'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Имя пользователя',
+            'password' => 'Пароль',
+            'email' => 'Почта',
+            'auth_key' => 'Ключ аутентификации',
+            'status' => 'Статус',
+            'role' => 'Роль',
+            'created_at' => 'Время создания',
+            'updated_at' => 'Время обновления'
         ];
     }
 

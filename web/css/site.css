@@ -1,6 +1,16 @@
 html,
 body {
     height: 100%;
+    background: #f5f6f9;
+    color: #252e4f;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #252e4f;
+}
+
+p {
+    color: #737a96;
 }
 
 .wrap {
@@ -16,8 +26,8 @@ body {
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f1f1;
     padding-top: 20px;
 }
 
@@ -34,6 +44,52 @@ body {
 .not-set {
     color: #c55;
     font-style: italic;
+}
+
+.btn-theme {
+    background: #53bd95;
+    color: white;
+    outline: none;
+}
+
+.btn-theme:hover {
+    background: #479c7c;
+    color: white;
+}
+
+.btn-theme:focus {
+    outline: none !important;
+    outline-offset: 0;
+    color: white;
+}
+
+.middle-block {
+    vertical-align: middle;
+    float: none;
+    margin: auto;
+}
+
+.main-content {
+    padding: 2rem;
+    border-radius: 10px;
+    background: white;
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    border-bottom: 2px dashed #eff1f6;
+    border-radius: 0;
+    background: transparent;
+}
+
+a {
+    color: #53bd95;
+}
+
+a:hover {
+    color: #479c7c;
 }
 
 /* add sorting icons to gridview sort links */
@@ -96,9 +152,50 @@ a.desc:after {
     border: none;
 }
 
-@media(max-width:767px) {
+.navbar-brand {
+    color: #53bd95 !important;
+}
+
+.custom-navbar {
+    background: white;
+}
+
+.custom-navbar a {
+
+    font-weight: 600;
+    color: #464e6a;
+}
+
+.login-btn {
+    background: #53bd95;
+
+    transition: 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+    background: #53bd95;
+
+    transition: 0.2s ease-in-out;
+}
+
+.login-btn a {
+    color: white;
+}
+
+.login-btn a:hover {
+    background-color: #479c7c !important;
+
+    color: white;
+    transition: 0.2s ease-in-out;
+}
+
+.text-theme-color {
+
+}
+
+@media (max-width: 767px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
