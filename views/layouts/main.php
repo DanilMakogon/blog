@@ -42,25 +42,32 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'О нас', 'url' => ['/site/about']],
-            ['label' => 'Контакты', 'url' => ['/site/contact']]
+            ['label' => 'Контакты', 'url' => ['/site/contact']],
         ],
     ]);
     if (Yii::$app->user->isGuest) {
         echo HTML::a('Регистрация', Url::to(['site/signup']), ['class' => 'btn']);
         echo HTML::a('Войти', Url::to(['site/login']), ['class' => 'login-btn']);
     } else {
+        $dropDownLinks = '';
+        if (Yii::$app->user->identity->isAdmin()) {
+            $dropDownLinks = '<a class="dropdown-item text-warning" href=' . Url::to(['admin-panel/index']) . '>' . FAS::icon('crown')->addCssClass('mr-1') . ' Панель администратора</a>';
+        }
+        $dropDownLinks .= '<a class="dropdown-item" href=' . Url::to(['']) . '>' . FAS::icon('address-card')->addCssClass('mr-1') . ' Профиль</a>
+                    <a class="dropdown-item" href=' . Url::to(['site/logout']) . '>' . FAS::icon('sign-out-alt')->addCssClass('mr-1') . ' Выйти</a>';
+
         echo '<div class="dropdown">
                   <a class="link-profile" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     ' . FAS::icon('user')->addCssClass('mr-1')->size(FAS::SIZE_EXTRA_SMALL) . Yii::$app->user->identity->username . '
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href=' . Url::to(['']) . '>' . FAS::icon('address-card')->addCssClass('mr-1') . ' Профиль</a>
-                    <a class="dropdown-item" href=' . Url::to(['site/logout']) . '>' . FAS::icon('sign-out-alt')->addCssClass('mr-1') . ' Выйти</a>
+                   ' . $dropDownLinks . '
                   </div>
                 </div>';
     }
 
     NavBar::end();
+
     ?>
 
     <div class="container">

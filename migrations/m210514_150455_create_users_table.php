@@ -23,6 +23,7 @@ class m210514_150455_create_users_table extends Migration
             'password_reset_token' => $this->string()->unique(),
             'email' => $this->string()->notNull()->unique(),
             'role' => $this->integer()->notNull()->defaultValue(User::ROLE_USER),
+            'is_blocked' => $this->boolean()->defaultValue(false)->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
