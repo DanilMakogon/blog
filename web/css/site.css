@@ -161,20 +161,37 @@ a.desc:after {
 }
 
 .custom-navbar a {
-
+    display: flex;
+    align-items: center;
     font-weight: 600;
     color: #464e6a;
 }
 
+.custom-navbar li {
+    display: flex;
+}
+
+.link-profile {
+    margin: 0 10px;
+    color: #53bd95 !important;
+}
+
+.link-profile:hover {
+    cursor: pointer;
+}
+
 .login-btn {
     background: #53bd95;
-
     transition: 0.2s ease-in-out;
+    display: block !important;
+    height: 100%;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white !important;
 }
 
 .login-btn:hover {
     background: #53bd95;
-
     transition: 0.2s ease-in-out;
 }
 

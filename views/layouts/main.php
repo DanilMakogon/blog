@@ -6,10 +6,11 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use rmrevin\yii\fontawesome\FAS;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -33,30 +34,32 @@ AppAsset::register($this);
         'brandLabel' => "ProgBlog",
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-fixed-top custom-navbar',
+            'class' => 'navbar-expand-lg custom-navbar',
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav  mr-auto'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'О нас', 'url' => ['/site/about']],
-            ['label' => 'Контакты', 'url' => ['/site/contact']],
-            ['label' => 'Регистрация', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest],
-            Yii::$app->user->isGuest ? (
-            ['label' => 'Войти', 'url' => ['/site/login'], 'options' => ['class' => 'login-btn']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Выйти (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            ['label' => 'Контакты', 'url' => ['/site/contact']]
         ],
     ]);
+    if (Yii::$app->user->isGuest) {
+        echo HTML::a('Регистрация', Url::to(['site/signup']), ['class' => 'btn']);
+        echo HTML::a('Войти', Url::to(['site/login']), ['class' => 'login-btn']);
+    } else {
+        echo '<div class="dropdown">
+                  <a class="link-profile" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ' . FAS::icon('user')->addCssClass('mr-1')->size(FAS::SIZE_EXTRA_SMALL) . Yii::$app->user->identity->username . '
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href=' . Url::to(['']) . '>' . FAS::icon('address-card')->addCssClass('mr-1') . ' Профиль</a>
+                    <a class="dropdown-item" href=' . Url::to(['site/logout']) . '>' . FAS::icon('sign-out-alt')->addCssClass('mr-1') . ' Выйти</a>
+                  </div>
+                </div>';
+    }
+
     NavBar::end();
     ?>
 
@@ -71,9 +74,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; ПрогБлог <?= date('Y') ?></p>
     </div>
 </footer>
 
