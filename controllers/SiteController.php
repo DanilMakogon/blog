@@ -2,8 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Blog;
 use app\models\ContactForm;
 use app\models\LoginForm;
+use app\models\Note;
+use app\models\NoteCategory;
 use app\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -33,7 +36,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -62,7 +65,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $notes = (new Blog(5, 5))->getNotes();
+        $categories = (new NoteCategory())->find()->all();
+        return $this->render('index', ['notes' => $notes, 'categories' => $categories]);
+    }
+
+    public function actionNote($id)
+    {
+        $note = (new Note())->find()->where(['id' => $id])->one();
+        return $this->render('note', ['note' => $note]);
     }
 
     /**

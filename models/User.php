@@ -49,6 +49,7 @@ class User extends ActiveRecord implements IdentityInterface
             'email' => 'Почта',
             'auth_key' => 'Ключ аутентификации',
             'status' => 'Статус',
+            'is_blocked' => 'Статус блокировки',
             'role' => 'Роль',
             'created_at' => 'Время создания',
             'updated_at' => 'Время обновления'

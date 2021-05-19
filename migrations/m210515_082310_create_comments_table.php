@@ -19,6 +19,7 @@ class m210515_082310_create_comments_table extends Migration
             'comment_id' => $this->integer(),
             'is_reply' => $this->boolean(),
             'is_approved' => $this->boolean()->defaultValue(false),
+            'author_id' => $this->integer()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull()
         ]);

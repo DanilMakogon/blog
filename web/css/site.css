@@ -97,7 +97,7 @@ a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
     display: inline-block;
-    font-family: 'Glyphicons Halflings';
+    font-family: 'FONT AWESOME 5 PRO';
     font-style: normal;
     font-weight: normal;
     line-height: 1;
@@ -105,11 +105,11 @@ a.asc:after, a.desc:after {
 }
 
 a.asc:after {
-    content: /*"\e113"*/ "\e151";
+    content: /*"\e113"*/ "\f0de";
 }
 
 a.desc:after {
-    content: /*"\e114"*/ "\e152";
+    content: /*"\e114"*/ "\f0dd";
 }
 
 .sort-numerical a.asc:after {
@@ -180,6 +180,12 @@ a.desc:after {
     cursor: pointer;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #58c1a9;
+    border: 2px dashed #58c1a9;
+    background-color: transparent;
+}
+
 .login-btn {
     background: #53bd95;
     transition: 0.2s ease-in-out;
@@ -208,6 +214,180 @@ a.desc:after {
 
 .text-theme-color {
 
+}
+
+.summary {
+    border: 0;
+    font-size: 13px;
+    color: #bebecc;
+    float: right;
+    padding: 6px 0;
+}
+
+.admin-table a {
+    color: #57b994;
+    font-weight: 400;
+}
+
+.admin-table {
+    border: 2px dashed #f5f6f9;
+    color: #969eab;
+}
+
+.blocked-status {
+    background: #b32d2da6;
+    color: white;
+    padding: 2px 7px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 7px;
+    cursor: default;
+}
+
+.unblocked-status {
+    background: #58c1a9;
+    color: white;
+    padding: 2px 7px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 7px;
+    cursor: default;
+}
+
+.role-admin {
+    background: #d4d489;
+    color: white;
+    padding: 2px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: default;
+}
+
+.role-user {
+    background: #89d4c3;
+    color: white;
+    padding: 2px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: default;
+}
+
+.admin-table thead th {
+    color: #777880;
+    font-weight: 400;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.post:first-child {
+    margin: 0 0 20px 0 !important;
+}
+
+.post {
+    margin: 20px 0;
+}
+
+.post-content {
+    color: #7a7f90;
+    padding: 10px 0 10px 10px;
+}
+
+.post .additional-info {
+    font-size: 13px;
+    font-weight: 500;
+    color: #b0b2b9;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #e1e1e2;
+}
+
+.post .additional-info span:after {
+    content: '\00B7';
+    margin: 0 5px;
+}
+
+.post .additional-info span:last-child:after {
+    content: '';
+}
+
+.sidebar-heading {
+    font-weight: 500;
+    text-align: right;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 2px 0;
+    margin: 0 0 5px 0;
+    text-align: right;
+    color: #7a7f90;
+    font-size: 14px;
+
+}
+
+.sidebar ul li:after {
+    content: '\f0d9';
+    font-family: 'Font Awesome 5 Pro', sans-serif;
+    color: #b0b2b9;
+    margin-left: 5px;
+
+}
+
+.count-of-notes {
+    float: right;
+    font-size: 12px;
+    color: #ccced6;
+    font-weight: 500;
+    cursor: default;
+}
+
+.note-view h1 {
+    text-align: center;
+    border-bottom: 3px dashed #252e4f14;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+.note-addition-info {
+    border-top: 3px dashed #eeeff1;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+
+.note-addition-info span {
+    font-weight: 500;
+    color: #b0b2b9;
+    font-size: 13px;
+
+}
+
+.note-addition-info span:after {
+    content: '\00B7';
+    margin: 0 10px;
+}
+
+.note-addition-info span:last-child:after {
+    content: '';
+    margin: 0 10px;
+}
+
+.send-comment textarea {
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid #eeeff1;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.send-comment textarea:focus {
+    outline: none !important;;
 }
 
 @media (max-width: 767px) {

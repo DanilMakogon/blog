@@ -2,22 +2,21 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Note Categories';
+$this->title = 'Notes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="note-category-index">
+<div class="note-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Note Category', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Note', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php Pjax::begin(); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,13 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
-            'is_hidden',
+            'title',
+            'content:ntext',
+            'created_at',
+            'updated_at',
+            //'category_id',
+            //'creator_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
 
 </div>

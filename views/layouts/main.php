@@ -9,6 +9,7 @@ use app\widgets\Alert;
 use rmrevin\yii\fontawesome\FAS;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -26,9 +27,11 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+
     <?php
     NavBar::begin([
         'brandLabel' => "ProgBlog",
@@ -71,9 +74,11 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+        <?php
+            echo Alert::widget()
+        ?>
         <div class="main-content">
 
-            <?= Alert::widget() ?>
             <?= $content ?>
         </div>
     </div>
@@ -86,6 +91,7 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+
 </body>
 </html>
 <?php $this->endPage() ?>

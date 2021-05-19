@@ -23,5 +23,14 @@ $this->registerJsFile('js/admin.js', ['depends' => yii\bootstrap4\BootstrapPlugi
     </li>
 </ul>
 <hr>
+<?php
+if (isset($userProvider)) {
+    echo $this->render('_user', ['userProvider' => $userProvider]);
+} elseif (isset($noteProvider)) {
+    echo $this->render('_note', ['noteProvider' => $noteProvider]);
+} elseif (isset($noteCategoryProvider)) {
+    echo $this->render('_category', ['noteCategoryProvider' => $noteCategoryProvider]);
+}
+?>
 
 

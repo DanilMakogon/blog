@@ -3,14 +3,14 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\NoteCategory;
+use app\models\Note;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * NoteController implements the CRUD actions for NoteCategory model.
+ * NoteController implements the CRUD actions for Note model.
  */
 class NoteController extends Controller
 {
@@ -30,13 +30,13 @@ class NoteController extends Controller
     }
 
     /**
-     * Lists all NoteCategory models.
+     * Lists all Note models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => NoteCategory::find(),
+            'query' => Note::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class NoteController extends Controller
     }
 
     /**
-     * Displays a single NoteCategory model.
+     * Displays a single Note model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class NoteController extends Controller
     }
 
     /**
-     * Creates a new NoteCategory model.
+     * Creates a new Note model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new NoteCategory();
+        $model = new Note();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class NoteController extends Controller
     }
 
     /**
-     * Updates an existing NoteCategory model.
+     * Updates an existing Note model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class NoteController extends Controller
     }
 
     /**
-     * Deletes an existing NoteCategory model.
+     * Deletes an existing Note model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class NoteController extends Controller
     }
 
     /**
-     * Finds the NoteCategory model based on its primary key value.
+     * Finds the Note model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return NoteCategory the loaded model
+     * @return Note the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = NoteCategory::findOne($id)) !== null) {
+        if (($model = Note::findOne($id)) !== null) {
             return $model;
         }
 
